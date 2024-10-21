@@ -1,0 +1,25 @@
+#Header
+{
+    background-color: #344a64;
+    width:100%;
+    height:64px;
+    position:fixed;
+    left:0;
+    top:0;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+}
+
+#HeaderLogo
+{
+    height:80%;
+}
+
+#MorteVisionLogoText
+{
+    margin-left: 5px;
+    color:white;
+    font-family: "Londrina Sketch", sans-serif;
+}
