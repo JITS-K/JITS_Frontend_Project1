@@ -68,6 +68,48 @@ search_exclude: true
         #add-btn:hover {
             background-color: #218838;
         }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -75,14 +117,21 @@ search_exclude: true
     <div id="app">
         <h1>My Plans</h1>
         <ul id="plan-list">
-            <!-- Dynamic content goes here -->
+            <!-- Task content goes here -->
         </ul>
     </div>
 
     <button id="add-btn">+</button>
 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Plan</h2>
+            <input type="text" id="new-plan-input" placeholder="Enter your plan" />
+            <button id="save-plan-btn">Save Plan</button>
+        </div>
+    </div>
+
     <script>
-        // Initialize with some dummy data (placeholder for database)
         const plans = [
             "Plan 1: Meeting at 10 AM",
             "Plan 2: Gym session at 6 PM"
@@ -90,7 +139,7 @@ search_exclude: true
 
         function renderPlans() {
             const planList = document.getElementById('plan-list');
-            planList.innerHTML = ''; // Clear previous list items
+            planList.innerHTML = '';
 
             plans.forEach((plan, index) => {
                 const li = document.createElement('li');
@@ -100,12 +149,19 @@ search_exclude: true
         }
 
         document.getElementById('add-btn').addEventListener('click', function() {
-            const newPlan = `Plan ${plans.length + 1}: New Task`;  // Placeholder task
-            plans.push(newPlan);
-            renderPlans(); 
+            document.getElementById('modal').style.display = 'flex';
         });
 
-        // Initial render
+        document.getElementById('save-plan-btn').addEventListener('click', function() {
+            const newPlan = document.getElementById('new-plan-input').value;
+            if (newPlan) {
+                plans.push(newPlan);
+                renderPlans();
+                document.getElementById('new-plan-input').value = '';
+                document.getElementById('modal').style.display = 'none';
+            }
+        });
+
         renderPlans();
     </script>
 
