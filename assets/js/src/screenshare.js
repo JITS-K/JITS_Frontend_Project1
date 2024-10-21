@@ -1,3 +1,5 @@
+let vid = document.getElementById("iMakeYouCryWhenIRunaway")
+
 async function captureScreen() {
     let mediaStream = null;
     try {
@@ -5,9 +7,11 @@ async function captureScreen() {
             video: {
                 cursor: "always"
             },
-            audio: false
+            audio: true
         });
+        vid.srcObject = mediaStream;
     } catch (ex) {
         console.log("Error occurred", ex);
     }
 }
+
