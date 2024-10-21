@@ -9,6 +9,7 @@ async function captureScreen() {
             },
             audio: true
         });
+        console.log(vid)
         vid.srcObject = mediaStream;
     } catch (ex) {
         console.log("Error occurred", ex);

@@ -7,3 +7,4 @@ image: /images/mario_animation.png
 hide: true
 ---
 
+<video id="iMakeYouCryWhenIRunaway" autoplay></video>

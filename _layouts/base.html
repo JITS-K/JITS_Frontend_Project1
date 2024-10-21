@@ -13,8 +13,21 @@
   {%- include theme/time-machine/base.html -%}
 {% elsif site.remote_theme contains 'cayman' %}
   {%- include theme/cayman/base.html -%}
+{%- else -%}
+  {%- include head.html -%}
+  <body>
+
+  {%- include header.html -%}
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      {{ content }}
+    </div>
+  </main>
+
+  {%- include footer.html -%}
+
+  </body>
 {% endif %}
-{%- include head.html -%}
-{%- include header.html -%}
 
 </html>
